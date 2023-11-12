@@ -122,14 +122,14 @@ const Home: NextPage<Props> = ({ outputTexts }) => {
               Loading...
             </div>
           ) : (
-            <div>
-            <div className='text-5xl md:text-8xl text-[#ADEFD1FF] font-kanit'>
-              {differenceInFormattedString.differenceInDaysText}
-            </div>
+            <div className='flex flex-col justify-center items-center'>
+              <div className='text-3xl sm:text-4xl md:text-8xl text-[#ADEFD1FF] font-kanit '>
+                {differenceInFormattedString.differenceInDaysText}
+              </div>
 
-            <div className='text-3xl md:text-5xl text-[#ADEFD1FF] font-kanit'>
-              {differenceInFormattedString.differenceInHoursText} {differenceInFormattedString.differenceInMinutesText} {differenceInFormattedString.differenceInSecondsText}  
-            </div>
+              <div className='text-2xl sm:text-2xl md:text-4xl text-[#ADEFD1FF] font-kanit'>
+                {differenceInFormattedString.differenceInHoursText} {differenceInFormattedString.differenceInMinutesText} {differenceInFormattedString.differenceInSecondsText}  
+              </div>
             </div>
           )}
 
