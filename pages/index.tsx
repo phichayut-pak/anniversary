@@ -28,7 +28,7 @@ const Home: NextPage<Props> = ({ outputTexts }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentDate = new Date();
-      const augustDate = new Date(2021, 7, 31); // month is 0-indexed, so 7 is August
+      const augustDate = new Date(2020, 7, 18); // month is 0-indexed, so 7 is August
 
       const currentYear = currentDate.getFullYear();
       const currentMonth = currentDate.getMonth();
