@@ -24,6 +24,7 @@ interface outputTexts {
 
 const Home: NextPage<Props> = ({ outputTexts }) => {
   const [differenceInFormattedString, setDifferenceInFormattedString] = useState<outputTexts>(outputTexts);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -95,6 +96,7 @@ const Home: NextPage<Props> = ({ outputTexts }) => {
 
 
       setDifferenceInFormattedString(outputTexts);
+      setIsLoading(false);
     }, 1000); // 1000 milliseconds = 1 second
 
     return () => clearInterval(intervalId);
@@ -115,13 +117,22 @@ const Home: NextPage<Props> = ({ outputTexts }) => {
       <main className='relative min-h-screen flex flex-col justify-center items-center bg-[#00203FFF]'>
         <div className=' border-[10px] p-7 md:p-16 flex flex-col justify-center items-center rounded-3xl space-y-3'>
 
-          <div className='text-5xl md:text-8xl text-[#ADEFD1FF] font-kanit'>
-            {differenceInFormattedString.differenceInDaysText}
-          </div>
+          { isLoading ? (
+            <div className='text-5xl md:text-8xl text-[#ADEFD1FF] font-kanit'>
+              Loading...
+            </div>
+          ) : (
+            <div>
+            <div className='text-5xl md:text-8xl text-[#ADEFD1FF] font-kanit'>
+              {differenceInFormattedString.differenceInDaysText}
+            </div>
 
-          <div className='text-3xl md:text-5xl text-[#ADEFD1FF] font-kanit'>
-            {differenceInFormattedString.differenceInHoursText} {differenceInFormattedString.differenceInMinutesText} {differenceInFormattedString.differenceInSecondsText}  
-          </div>
+            <div className='text-3xl md:text-5xl text-[#ADEFD1FF] font-kanit'>
+              {differenceInFormattedString.differenceInHoursText} {differenceInFormattedString.differenceInMinutesText} {differenceInFormattedString.differenceInSecondsText}  
+            </div>
+            </div>
+          )}
+
 
         </div>
 
